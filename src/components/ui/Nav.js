@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import { colors } from 'styles/theme';
 
 const styles = {
     nav: {
         padding: '16px 32px',
-        background: '#3d405b',
+        background: colors.primary,
         display: 'flex',
         width: '100vw',
         gap: 32,
@@ -13,8 +14,8 @@ const styles = {
         textDecoration: 'none'
     },
     linkActive: {
-        color: '#f2cc8f',
-        textDecoration: 'underline #f2cc8f'
+        color: colors.secondary,
+        textDecoration: `underline ${colors.secondary}`
     },
     linkInactive: {
         color: 'white'
@@ -28,12 +29,11 @@ const getActiveStyle = (isActive) => {
 const Nav = () => {
     return (
         <nav style={styles.nav}>
-            <NavLink style={({ isActive }) => getActiveStyle(isActive)} to="/users">
-                Users
-            </NavLink>
-
             <NavLink style={({ isActive }) => getActiveStyle(isActive)} to="/">
                 Home
+            </NavLink>
+            <NavLink style={({ isActive }) => getActiveStyle(isActive)} to="/users">
+                Users
             </NavLink>
         </nav>
     );
