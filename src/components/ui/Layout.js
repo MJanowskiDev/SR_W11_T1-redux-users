@@ -1,4 +1,5 @@
 import Nav from './Nav';
+import SnackbarWrapper from 'containers/SnackbarWrapper';
 const styles = {
     container: {
         display: 'flex',
@@ -14,6 +15,7 @@ const Layout = ({ children }) => {
     return (
         <main>
             <Nav />
+            <SnackbarWrapper />
             <div style={styles.container}>
                 <div style={styles.content}>{children}</div>
             </div>

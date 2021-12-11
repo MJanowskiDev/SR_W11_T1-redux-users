@@ -1,4 +1,5 @@
 import { fetchUsers } from 'services/users';
+import { add as addSnackbar } from './snackbar';
 
 const LOAD = 'users/LOAD';
 const RESET = 'users/RESET';
@@ -47,12 +48,66 @@ export function loading() {
 
 export const getUsers = () => (dispatch) => {
     dispatch(loading());
-    fetchUsers().then((result) => dispatch(loadUsers(result.results))).catch((e) => dispatch(error()));
+    dispatch(
+        addSnackbar({
+            message: 'Started fetching users from server',
+            severity: 'info'
+        })
+    );
+    fetchUsers()
+        .then((result) => {
+            dispatch(
+                addSnackbar({
+                    message: 'Users loading succeed',
+                    severity: 'success'
+                })
+            );
+            dispatch(loadUsers(result.results));
+        })
+        .catch((e) => {
+            dispatch(error());
+            dispatch(
+                addSnackbar({
+                    message: 'Fetching users failed',
+                    severity: 'error'
+                })
+            );
+        });
 };
 export const resetUsers = () => (dispatch) => {
     dispatch(reset());
+    dispatch(
+        addSnackbar({
+            message: 'Users list successfully wiped',
+            severity: 'success'
+        })
+    );
 };
 export const getOneUser = () => (dispatch) => {
     dispatch(loading());
-    fetchUsers(1).then((result) => dispatch(addOne(result.results))).catch((e) => dispatch(error()));
+    dispatch(
+        addSnackbar({
+            message: 'Started fetching user from server',
+            severity: 'info'
+        })
+    );
+    fetchUsers(1)
+        .then((result) => {
+            dispatch(
+                addSnackbar({
+                    message: 'User loading succeed',
+                    severity: 'success'
+                })
+            );
+            dispatch(addOne(result.results));
+        })
+        .catch((e) => {
+            dispatch(error());
+            dispatch(
+                addSnackbar({
+                    message: 'Fetching user failed',
+                    severity: 'error'
+                })
+            );
+        });
 };
