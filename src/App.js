@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from 'components/ui';
-import { Home, Users } from 'containers';
+import { Home, Users, Contact } from 'containers';
 
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -15,6 +15,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/users" element={<Users />} />
+                        <Route path="/contact" element={<Contact />} />
                     </Routes>
                 </Layout>
             </BrowserRouter>

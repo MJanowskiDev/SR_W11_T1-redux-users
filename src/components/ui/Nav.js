@@ -35,6 +35,9 @@ const Nav = () => {
             <NavLink style={({ isActive }) => getActiveStyle(isActive)} to="/users">
                 Users
             </NavLink>
+            <NavLink style={({ isActive }) => getActiveStyle(isActive)} to="/contact">
+                Contact
+            </NavLink>
         </nav>
     );
 };
