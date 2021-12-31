@@ -111,3 +111,5 @@ export const getOneUser = () => (dispatch) => {
             );
         });
 };
+
+export const selectUsers = (state) => state.users.users || [];

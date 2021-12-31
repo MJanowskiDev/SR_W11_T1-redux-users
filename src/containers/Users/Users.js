@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getUsers } from 'redux/modules/users';
+import { getUsers, selectUsers } from 'redux/modules/users';
 import { connect } from 'react-redux';
 import { Spinner } from 'components/ui';
 import UserList from 'components/Users/UsersList';
@@ -23,7 +23,7 @@ const Users = ({ users, isLoading, getUsers }) => {
 };
 
 const mapStateToProps = (state) => ({
-    users: state.users.users,
+    users: selectUsers(state),
     isLoading: state.users.isLoading
 });
 
